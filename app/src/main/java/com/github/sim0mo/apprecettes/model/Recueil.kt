@@ -1,5 +1,6 @@
 package com.github.sim0mo.apprecettes.model
 
+import com.github.sim0mo.apprecettes.Utility
 import com.github.sim0mo.apprecettes.model.ingredients.Composant
 import java.io.*
 import java.nio.charset.StandardCharsets
@@ -152,11 +153,11 @@ class Recueil private constructor(recettes: List<Recette>) {
     fun printAllRecettesWith(i1: String, vararg i: String) {
         System.out.printf("Recettes contenant : %s %s\n", i1, Arrays.toString(i))
         val l = Arrays.stream(i).map { s: String ->
-            Main.cleanString(
+            Utility.cleanString(
                 s
             )
         }.collect(Collectors.toList())
-        l.add(0, Main.cleanString(i1))
+        l.add(0, Utility.cleanString(i1))
         for (r in searchConjunctive(l)) {
             println(r.name)
         }

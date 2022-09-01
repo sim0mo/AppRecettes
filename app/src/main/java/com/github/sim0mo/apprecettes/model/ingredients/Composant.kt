@@ -20,7 +20,7 @@ class Composant(val ingredient: Ingredient, val quantite: Double, val unite: Uni
 
 
     companion object {
-        private val synonyms: MutableMap<String, String> = java.util.HashMap<String, String>()
+
         fun parse(s: String): Composant {
             val second: String = s.substring(s.indexOf(" ") + 1)
             val first: String = s.substring(0, s.indexOf(" "))
@@ -30,36 +30,6 @@ class Composant(val ingredient: Ingredient, val quantite: Double, val unite: Uni
             val un = Unite.parse(first)
             val qu = Unite.parseNumber(first)
             return Composant(`in`, qu, un)
-        }
-
-        init {
-            try {
-                val reader: java.io.BufferedReader = java.io.BufferedReader(
-                    java.io.InputStreamReader(
-                        java.util.Objects.requireNonNull<java.io.InputStream>(
-                            Composant::class.java.getClassLoader()
-                                .getResourceAsStream("synonyms.txt")
-                        ),
-                        java.nio.charset.StandardCharsets.UTF_8
-                    )
-                )
-                reader.lines()
-                    .forEachOrdered { l: String? ->
-                        val line: List<String> =
-                            listOf(
-                                l?.split(",")
-                                    ?.toTypedArray().toString()
-                            )
-                        for (synonym in line.subList(
-                            1,
-                            line.size
-                        )) {
-                            synonyms[line[0]] = synonym
-                        }
-                    }
-            } catch (e: java.lang.Exception) {
-                throw java.lang.RuntimeException(e)
-            }
         }
     }
 }

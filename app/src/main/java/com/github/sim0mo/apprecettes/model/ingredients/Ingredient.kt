@@ -1,6 +1,7 @@
 package com.github.sim0mo.apprecettes.model.ingredients
 
-import com.github.sim0mo.apprecettes.model.Main
+import android.app.Application
+import com.github.sim0mo.apprecettes.Utility
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.nio.charset.StandardCharsets
@@ -13,9 +14,9 @@ import java.util.function.Consumer
  */
 class Ingredient {
     val name: String
-    get() {
-        return if (specification == "") field else field + specification
-    }
+        get() {
+            return if (specification == "") field else field + specification
+        }
     var specification = ""
         private set
 
@@ -41,18 +42,20 @@ class Ingredient {
         return name.hashCode()
     }
 
-    companion object {
+    companion object : Application() {
+        //Ingredient in first position of each line will be considered as standard form
+        private val synonyms: MutableMap<String, String> = java.util.HashMap<String, String>()
         private val allowedIngredients: MutableSet<String> = HashSet()
         fun fromString(s: String): Ingredient {
-            var s = s
-            s = Main.cleanString(s)
-            val result: Ingredient = if (s.contains("(")) {
+            var s1 = s
+            s1 = Utility.cleanString(s1)
+            val result: Ingredient = if (s1.contains("(")) {
                 Ingredient(
-                    s.substring(0, s.indexOf("(")),
-                    s.substring(s.indexOf("("), s.indexOf(")") + 1)
+                    s1.substring(0, s1.indexOf("(")),
+                    s1.substring(s1.indexOf("("), s1.indexOf(")") + 1)
                 )
             } else {
-                Ingredient(s)
+                Ingredient(s1)
             }
             require(allowedIngredients.contains(result.name)) {
                 String.format(
@@ -65,24 +68,32 @@ class Ingredient {
 
         init {
             try {
-                val reader = BufferedReader(
+                val ingredientsReader = BufferedReader(
                     InputStreamReader(
-                        Objects.requireNonNull(
-                            Ingredient::class.java.classLoader.getResourceAsStream(
-                                "ingredients.txt"
-                            )
-                        ), StandardCharsets.UTF_8
+                        applicationContext.assets.open("ingredients.txt"), StandardCharsets.UTF_8
                     )
                 )
-                reader.lines().forEachOrdered(Consumer { l: String? ->
+                val synonymsReader = BufferedReader(
+                    InputStreamReader(
+                        applicationContext.assets.open("synonyms.txt"), StandardCharsets.UTF_8
+                    )
+                )
+                ingredientsReader.lines().forEachOrdered { l: String? ->
                     allowedIngredients.addAll(
                         listOf(
-                            listOf(
-                                l?.split(",")?.toTypedArray()
-                            ).toString()
+                            listOf(l?.split(",")?.toTypedArray()).toString()
                         )
                     )
-                })
+                }
+                synonymsReader.lines().forEachOrdered { l: String? ->
+                    val line: List<String> =
+                        listOf(l?.split(",")?.toTypedArray().toString()
+                        )
+                    for (synonym in line.subList(1, line.size)) {
+                        synonyms[synonym] = line[0]
+                    }
+                }
+
             } catch (e: Exception) {
                 throw RuntimeException(e)
             }
