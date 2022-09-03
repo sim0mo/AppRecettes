@@ -19,10 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // TODO: use a synonym provider or sthg else
+        Ingredient.init(this)
+
         basic = parseFrigo("frigo.txt")
 
-        val gastronogeek: Recueil = load("/gastronogeek.txt")
-        val catherine1: Recueil = load("/catherine1.txt")
+        val gastronogeek: Recueil = load("gastronogeek.txt")
+        val catherine1: Recueil = load("catherine1.txt")
         //        gastronogeek.printAllRecettesWith("vodka" );
 
         //gastronoGeek.recettesDisponibles(promptIngredientsIllimited())).forEach(System.out::println);
@@ -34,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
 //        catherine1.searchDisjunctive(List.of("SAFRAN","CANNELLE")).forEach(System.out::println);
 //        System.out.println("***");
+        log("")
         catherine1.recettesPresqueDisponibles(
             listOf(
                 Composant(Ingredient("OLIVE"), 300, Unite.G),
@@ -47,9 +51,15 @@ class MainActivity : AppCompatActivity() {
                 Composant(Ingredient("LAIT"), 5, Unite.DL),
                 Composant(Ingredient("CHOCOLAT_NOIR"), 600, Unite.G)
             )
-        ).forEach{r -> Log.println(Log.ASSERT, "r: ", r.toString())}
-        //gastronoGeek.recettesContenant(EAU)).forEach(x -> System.out.println(x.getName()));
+        ).forEach{r -> log(r.toString())}
+        log("-----")
 
+        gastronogeek.searchConjunctive("GIN").forEach{x -> log(x.name)}
+
+    }
+
+    private fun log(msg : String) {
+        Log.println(Log.ASSERT, "***", msg)
     }
 
     private fun load(s: String): Recueil {
@@ -59,7 +69,7 @@ class MainActivity : AppCompatActivity() {
     private fun parseFrigo(fileName : String) : List<Composant> {
         val reader = BufferedReader(InputStreamReader(this.assets.open(fileName)))
         return reader.lines().map {
-            Composant.parse("100kg \$s")
+            Composant.parse("100kg $it")
         }.toList()
     }
 

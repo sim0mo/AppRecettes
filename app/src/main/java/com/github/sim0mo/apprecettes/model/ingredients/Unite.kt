@@ -35,7 +35,13 @@ enum class Unite(val coeff: Double) {
 
         fun parseNumber(s: String): Double {
             val n: String = s.replace("[A-z]| ".toRegex(), "")
-            return n.toDouble()
+            try {
+
+                return n.toDouble()
+            } catch (e : Exception){
+                println()
+                return 0.0
+            }
         }
     }
 }

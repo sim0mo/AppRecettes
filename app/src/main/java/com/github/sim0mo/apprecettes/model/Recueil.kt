@@ -71,7 +71,7 @@ class Recueil private constructor(recettes: List<Recette>) {
                     }
             ) { //détermine si leur nombre est suffisant
                 var faisable = true
-                for (required in r.ingredients) {
+                for (required in r.composants) {
                     for (disposable in ingredientsDisponibles) {
                         if (required.ingredient.name == disposable.ingredient.name) {
                             //System.out.println(required.quantiteFondamentale() + "   " + disposable.quantiteFondamentale());
@@ -93,9 +93,9 @@ class Recueil private constructor(recettes: List<Recette>) {
     ): List<Recette> {
         val recettesFaisables: MutableList<Recette> = ArrayList()
         for (r in recettes) {
-            val nIngredients = r.ingredients.size
+            val nIngredients = r.composants.size
             var nMatches = 0
-            for (c in r.ingredients) {
+            for (c in r.composants) {
                 for (d in ingredientsDisponibles) {
                     if (c.ingredient.name == d.ingredient.name &&
                         c.quantiteFondamentale() <= d.quantiteFondamentale()
@@ -119,27 +119,23 @@ class Recueil private constructor(recettes: List<Recette>) {
                     InputStreamReader( // TODO: 18.08.20 change charset
                         inputStream, StandardCharsets.UTF_8
                     )
-                ).use { reader ->
-                    reader.lines()
-                        .map { s: String ->
-                            s.split(
-                                ", *"
-                            ).toTypedArray()
-                        }
-                        .map { strings: Array<String> ->
+                ).lines()
+                    .map{it.split(Regex(", *"))
+                        .let { strings ->
                             val recette = Recette(strings[0])
                             for (i in 1 until strings.size) {
-                                recette.addComposant(Composant.parse(strings[i]))
+                                val s = strings[i]
+                                if(s.isNotEmpty()) {
+                                    recette.addComposant(Composant.parse(s))
+                                }
                             }
                             recette
                         }
-                        .forEachOrdered { e: Recette ->
-                            recettes.add(
-                                e
-                            )
-                        }
-                    return this
-                }
+                    }
+                    .forEachOrdered { e: Recette ->
+                        recettes.add(e)
+                    }
+                return this
             } catch (e: IOException) {
                 throw UncheckedIOException(e)
             }

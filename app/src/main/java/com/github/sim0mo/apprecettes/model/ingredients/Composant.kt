@@ -22,8 +22,8 @@ class Composant(val ingredient: Ingredient, val quantite: Double, val unite: Uni
     companion object {
 
         fun parse(s: String): Composant {
-            val second: String = s.substring(s.indexOf(" ") + 1)
-            val first: String = s.substring(0, s.indexOf(" "))
+            val second: String = s.substringAfter(" ")
+            val first: String = s.substringBefore(" ")
 
             //System.out.println(zero);
             val `in`: Ingredient = Ingredient.fromString(second)

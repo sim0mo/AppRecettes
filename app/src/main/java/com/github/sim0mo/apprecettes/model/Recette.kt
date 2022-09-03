@@ -7,34 +7,24 @@ import kotlin.math.floor
  * Une Recette contient des Composants et a un nom.
  */
 class Recette(val name: String) {
-    val ingredients: MutableList<Composant> = mutableListOf()
-    get() {
-        return java.util.Collections.unmodifiableList(field)
-    }
+    private val _composants : MutableList<Composant> = ArrayList()
+    val composants : List<Composant>
+        get() = _composants.toList()
 
     fun addComposant(composant: Composant) {
-        for (c in ingredients) {
-            if (java.util.Objects.equals(
-                    c.ingredient.name,
-                    composant.ingredient.name
-                ) &&
-                c.ingredient.specification == composant.ingredient.specification
-            ) {
-                throw java.lang.IllegalArgumentException(
-                    java.lang.String.format(
-                        "Déjà dans la recette %s ! (%s)",
-                        name, composant.ingredient.name
-                    )
-                )
+        for (c in composants) {
+            if (c.ingredient.fullName() == composant.ingredient.fullName() &&
+                c.ingredient.specification == composant.ingredient.specification) {
+                throw IllegalArgumentException("Déjà dans la recette $name ! (${composant.ingredient.fullName()})")
             }
         }
-        ingredients.add(composant)
+        _composants.add(composant)
     }
 
     override fun toString(): String {
-        val sb: java.lang.StringBuilder =
-            java.lang.StringBuilder().append(name).append("\n---------------\n")
-        for (e in ingredients) {
+        val sb: StringBuilder =
+            StringBuilder().append(name).append("\n---------------\n")
+        for (e in composants) {
             if (e.quantite != 0.0) if (floor(e.quantite) == e.quantite) sb.append(
                 e.quantite.toInt()
             ) else sb.append(e.quantite)
@@ -49,7 +39,7 @@ class Recette(val name: String) {
     }
 
     operator fun contains(ingredientNom: String?): Boolean {
-        for (c in ingredients) {
+        for (c in composants) {
             if (c.ingredient.name == ingredientNom) {
                 return true
             }
@@ -62,8 +52,8 @@ class Recette(val name: String) {
     val ingredientNames: List<String>
         get() {
             val list: MutableList<String> = java.util.ArrayList<String>()
-            for (i in ingredients) {
-                list.add(i.ingredient.name)
+            for (i in composants) {
+                list.add(i.ingredient.fullName())
             }
             return list
         }
