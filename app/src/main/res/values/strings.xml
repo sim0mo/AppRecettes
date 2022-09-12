@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">AppRecettes</string>
+    <string name="spinnerSpeakableText">A spinner to select ingredients to include in search</string>
 </resources>

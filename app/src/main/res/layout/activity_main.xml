@@ -7,10 +7,22 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:id="@+id/resultsTextView"
+        android:layout_width="291dp"
+        android:layout_height="290dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.88" />
+
+    <Spinner
+        android:id="@+id/ingedientSpinner"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/resultsTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -12,31 +12,31 @@ import java.io.InputStreamReader
 import kotlin.streams.toList
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var basic: List<Composant>
     private val keyb: java.util.Scanner = java.util.Scanner(System.`in`)
+    private lateinit var basicIngredients: List<Composant>
+    private lateinit var catherine1 : Recueil
+    private lateinit var gastronogeek : Recueil
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initDB()
 
+        mainTest()
+
+    }
+
+    private fun initDB(){
         // TODO: use a synonym provider or sthg else
         Ingredient.init(this)
 
-        basic = parseFrigo("frigo.txt")
+        basicIngredients = parseFrigo("frigo.txt")
 
-        val gastronogeek: Recueil = load("gastronogeek.txt")
-        val catherine1: Recueil = load("catherine1.txt")
-        //        gastronogeek.printAllRecettesWith("vodka" );
+        gastronogeek = load("gastronogeek.txt")
+        catherine1 = load("catherine1.txt")
+    }
 
-        //gastronoGeek.recettesDisponibles(promptIngredientsIllimited())).forEach(System.out::println);
-//        catherine1.printAllRecettesWith("LAIT");
-//        System.out.println();
-
-//        catherine1.recettesPresqueDisponibles(promptIngredientsIllimited()).forEach(System.out::println);
-//        System.out.println();
-
-//        catherine1.searchDisjunctive(List.of("SAFRAN","CANNELLE")).forEach(System.out::println);
-//        System.out.println("***");
+    private fun mainTest(){
         log("")
         catherine1.recettesPresqueDisponibles(
             listOf(
@@ -56,6 +56,17 @@ class MainActivity : AppCompatActivity() {
 
         gastronogeek.searchConjunctive("GIN").forEach{x -> log(x.name)}
 
+//        gastronogeek.printAllRecettesWith("vodka" );
+
+        //gastronoGeek.recettesDisponibles(promptIngredientsIllimited())).forEach(System.out::println);
+//        catherine1.printAllRecettesWith("LAIT");
+//        System.out.println();
+
+//        catherine1.recettesPresqueDisponibles(promptIngredientsIllimited()).forEach(System.out::println);
+//        System.out.println();
+
+//        catherine1.searchDisjunctive(List.of("SAFRAN","CANNELLE")).forEach(System.out::println);
+//        System.out.println("***");
     }
 
     private fun log(msg : String) {
@@ -84,7 +95,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun promptIngredientsIllimited(): List<Composant> {
-        val list: MutableList<Composant> = basic.toMutableList()
+        val list: MutableList<Composant> = basicIngredients.toMutableList()
         var input: String = keyb.nextLine()
         while (!input.isEmpty()) {
             list.add(Composant.parse("1000kg $input"))
