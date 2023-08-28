@@ -6,16 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/resultsTextView"
-        android:layout_width="291dp"
-        android:layout_height="290dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.88" />
-
     <Spinner
         android:id="@+id/ingedientSpinner"
         android:layout_width="256dp"
@@ -48,7 +38,8 @@
         app:layout_constraintBottom_toTopOf="@+id/resultsTextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ingedientSpinner" />
+        app:layout_constraintTop_toBottomOf="@+id/ingedientSpinner"
+        app:layout_constraintVertical_bias="0.883" />
 
     <TextView
         android:id="@+id/ingredientTextView"
@@ -65,5 +56,32 @@
         android:text="Recueil"
         app:layout_constraintBottom_toTopOf="@+id/recueilSpinner"
         app:layout_constraintStart_toStartOf="@+id/recueilSpinner" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="75dp"
+        android:layout_marginBottom="4dp"
+        app:itemIconSize="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+    <ScrollView
+        android:id="@+id/resultsTextView"
+        android:layout_width="395dp"
+        android:layout_height="349dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.94"
+        tools:layout_editor_absoluteX="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

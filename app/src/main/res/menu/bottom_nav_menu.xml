@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/uniqueIngredient"
+        android:title="Ingrédient unique"
+        android:icon="@mipmap/ingredient_foreground"/>
+    <item
+        android:id="@+id/multipleIngredients"
+        android:title="Ingrédients multiples"
+        android:icon="@mipmap/frigo_foreground"/>
+</menu>
