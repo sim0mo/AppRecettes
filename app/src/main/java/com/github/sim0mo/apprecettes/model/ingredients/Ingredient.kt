@@ -49,6 +49,10 @@ class Ingredient {
         private val synonyms: MutableMap<String, String> = java.util.HashMap<String, String>()
         private val allowedIngredients: MutableSet<String> = HashSet()
 
+        /**
+         * Given a raw string, outputs an Ingredient corresponding to it.
+         * Checks that the ingredient exists, reduces it to its main synonym and cleans the string.
+         */
         fun fromString(s: String): Ingredient {
             if(!initOK){
                 throw Exception("Initialization of companion object is required.")
@@ -69,6 +73,10 @@ class Ingredient {
             return result
         }
 
+        /**
+         * To be called only once with a valid context
+         * Loads synonyms file and file of allowed ingredients
+         */
         fun init(ctx : Context) {
             if (initOK) {
                 return
@@ -101,6 +109,10 @@ class Ingredient {
                     throw RuntimeException(e)
                 }
             }
+        }
+
+        fun getAllowedIngredients(): List<String> {
+            return allowedIngredients.toList()
         }
     }
 }

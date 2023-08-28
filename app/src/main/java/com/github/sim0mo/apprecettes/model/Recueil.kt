@@ -10,7 +10,7 @@ import java.util.stream.Collectors
 /**
  * Un Recueil de Recettes.
  */
-class Recueil private constructor(recettes: List<Recette>) {
+class Recueil(recettes: List<Recette>, val name: String) {
     private val recettes: List<Recette>
     override fun toString(): String {
         val allRecettes = StringBuilder()
@@ -18,7 +18,10 @@ class Recueil private constructor(recettes: List<Recette>) {
         return allRecettes.toString()
     }
 
-    fun searchConjunctive(String: String?): List<Recette> {
+    /**
+     * Searches all Recettes containing provided ingredient.
+     */
+    fun search(String: String?): List<Recette> {
         val recettesFaisables: MutableList<Recette> = ArrayList()
         for (r in recettes) {
             if (r.contains(String)) recettesFaisables.add(r)
@@ -26,6 +29,9 @@ class Recueil private constructor(recettes: List<Recette>) {
         return recettesFaisables
     }
 
+    /**
+     * Searches all Recettes that contain all provided ingredients.
+     */
     fun searchConjunctive(ingredients: List<String?>): List<Recette> {
         val recettesFaisables: MutableList<Recette> = ArrayList()
         for (r in recettes) {
@@ -43,6 +49,9 @@ class Recueil private constructor(recettes: List<Recette>) {
         return recettesFaisables
     }
 
+    /**
+     * Searches Recettes that contain at least one ingredient among the provided ones.
+     */
     fun searchDisjunctive(ingredients: List<String?>): List<Recette> {
         val recettesFaisables: MutableList<Recette> = ArrayList()
         for (i in ingredients) {
@@ -55,6 +64,9 @@ class Recueil private constructor(recettes: List<Recette>) {
         return recettesFaisables
     }
 
+    /**
+     * Given a list of ingredients, searches for all Recettes with all ingredients in the list.
+     */
     fun recettesDisponibles(ingredientsDisponibles: List<Composant>): List<Recette> {
         val recettesFaisables: MutableList<Recette> = ArrayList()
         for (r in recettes) {
@@ -86,6 +98,9 @@ class Recueil private constructor(recettes: List<Recette>) {
         return recettesFaisables
     }
 
+    /**
+     * Given a list of ingredients, searches for all Recettes with almost all ingredients in the list.
+     */
     @JvmOverloads
     fun recettesPresqueDisponibles(
         ingredientsDisponibles: List<Composant>,
@@ -113,6 +128,10 @@ class Recueil private constructor(recettes: List<Recette>) {
 
     class Loader {
         private val recettes: MutableList<Recette> = ArrayList()
+
+        /**
+         * Opens a Requeil from an InputStream and returns a Loader
+         */
         fun loadFrom(inputStream: InputStream?): Loader {
             try {
                 BufferedReader(
@@ -141,11 +160,18 @@ class Recueil private constructor(recettes: List<Recette>) {
             }
         }
 
-        fun build(): Recueil {
-            return Recueil(recettes)
+        /**
+         * Build the Recueil from this Loader
+         */
+        fun build(name: String): Recueil {
+            return Recueil(recettes, name)
         }
     }
 
+    /**
+     * Prints only Recettes name that contain every provided ingredient.
+     * Uses method searchConjunctive
+     */
     fun printAllRecettesWith(i1: String, vararg i: String) {
         System.out.printf("Recettes contenant : %s %s\n", i1, Arrays.toString(i))
         val l = Arrays.stream(i).map { s: String ->
