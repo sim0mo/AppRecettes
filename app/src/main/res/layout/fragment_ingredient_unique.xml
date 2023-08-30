@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IngredientUniqueFragment">
+
+    <TextView
+        android:id="@+id/resultsTextView"
+        android:layout_width="291dp"
+        android:layout_height="290dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.77" />
+
+    <Spinner
+        android:id="@+id/ingedientSpinner"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/resultsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/recueilSpinner"
+        android:layout_width="256dp"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toTopOf="@+id/ingedientSpinner"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.59" />
+
+    <Button
+        android:id="@+id/searchButton1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rechercher"
+        app:layout_constraintBottom_toTopOf="@+id/resultsTextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ingedientSpinner" />
+
+    <TextView
+        android:id="@+id/ingredientTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrédient"
+        app:layout_constraintBottom_toTopOf="@+id/ingedientSpinner"
+        app:layout_constraintStart_toStartOf="@+id/ingedientSpinner" />
+
+    <TextView
+        android:id="@+id/recueilTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recueil"
+        app:layout_constraintBottom_toTopOf="@+id/recueilSpinner"
+        app:layout_constraintStart_toStartOf="@+id/recueilSpinner" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

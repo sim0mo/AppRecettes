@@ -1,60 +1,52 @@
 package com.github.sim0mo.apprecettes
 
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
 import android.util.Log
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 import com.github.sim0mo.apprecettes.model.Recueil
 import com.github.sim0mo.apprecettes.model.ingredients.Composant
 import com.github.sim0mo.apprecettes.model.ingredients.Ingredient
-import com.github.sim0mo.apprecettes.model.ingredients.Unite
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import kotlin.streams.toList
 
+
 class MainActivity : AppCompatActivity() {
     private val keyb: java.util.Scanner = java.util.Scanner(System.`in`)
     private lateinit var basicIngredients: List<Composant>
-    private lateinit var allowedIngredients : List<String>
-    private lateinit var recueils: List<Recueil>
+    lateinit var allowedIngredients : List<String>
+    lateinit var recueils: List<Recueil>
 
-    private lateinit var recueilSpinner : Spinner
-    private lateinit var ingredientSpinner : Spinner
-    private lateinit var resultsTextView: TextView
-    private lateinit var searchButton: Button
+    private lateinit var bottomNavigationView: BottomNavigationView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initDB()
 
-        recueilSpinner = findViewById(R.id.recueilSpinner)
-        ingredientSpinner = findViewById(R.id.ingedientSpinner)
-        resultsTextView = findViewById(R.id.resultsTextView)
-        searchButton = findViewById(R.id.searchButton1)
+        val ingredientUniqueFragment = IngredientUniqueFragment()
 
-        recueilSpinner.adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            recueils.map { x -> x.name }
-        )
+        setCurrentFragment(ingredientUniqueFragment)
 
-        // TODO: Use a search bar instead of a spinner
-        ingredientSpinner.adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            allowedIngredients.sorted()
-        )
-
-//        mainTest()
-        searchButton.setOnClickListener {
-            val ingredient = ingredientSpinner.selectedItem.toString()
-            val recueil = recueils[recueilSpinner.selectedItemPosition]
-            val results = recueil.search(ingredient)
-            resultsTextView.text = ""
-            results.forEach{ x -> resultsTextView.text = resultsTextView.text.toString() + "\n" + x.name}
+        bottomNavigationView = findViewById(R.id.bottomNavigationView)
+        bottomNavigationView.setOnItemSelectedListener {
+            when(it.itemId){
+                R.id.uniqueIngredient -> setCurrentFragment(ingredientUniqueFragment)
+                R.id.multipleIngredients -> setCurrentFragment(IngredientsMultiplesFragment())
+            }
+            true
         }
     }
+
+    private fun setCurrentFragment(fragment: Fragment)=
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.flFragment,fragment)
+            commit()
+        }
 
     /**
      * Initiates all Recueils and Frigo as well as synonyms
@@ -89,7 +81,7 @@ class MainActivity : AppCompatActivity() {
 //        ).forEach{r -> log(r.toString())}
 //        log("-----")
 
-        recueils[0].search("VODKA").forEach{ x -> resultsTextView.text = resultsTextView.text.toString() + "\n" + x.name}
+//        recueils[0].search("VODKA").forEach{ x -> resultsTextView.text = resultsTextView.text.toString() + "\n" + x.name}
 
 //        gastronogeek.printAllRecettesWith("vodka" );
 
