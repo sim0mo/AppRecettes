@@ -1,0 +1,52 @@
+Old Fashioned, sucre, bitter, eau(gazeuse), whisky(bourbon), citron, orange
+Manhattan, bitter, vermouth(doux), whisky(rye), cerise(noire)
+Whiskey sour, citron, sirop, whisky(bourbon), blanc d'oeuf
+Sazerac, Bitter(Peychaud), sucre, eau(gazeuse), whisky(rye), absinthe
+Whisky fix, citron, sirop, whisky, cerise(noire)
+Boulevardier, vermouth(doux), whisky(bourbon), campari, orange(twist)
+Presbyterian, citron, gingembre(jus), whisky(rye), eau(gazeuse)
+Blinker, grenadine, pamplemousse(jus), whisky(rye)
+Improved Whiskey Cocktail, sucre, bitter, absinthe, whisky(rye), marasquin, orange(twist)
+Monte Carlo, bitter, liqueur(benedictine), whisky(rye), citron,
+Mint Julep, menthe, sucre, sirop, whisky(bourbon), rhum(jamaicain)
+Martini, vermouth(sec), gin, olive(verte)
+Martinez, bitter(orange), vermouth(doux), gin(old tom)
+Gimlet, citron, sirop, gin
+Gin Rickey, gin, sirop, citron, eau(gazeuse)
+Negroni, campari, vermouth(doux), gin
+Corpse reviver 2, citron, liqueur(triple sec), absinthe, gin, liqueur(lillet blanc)
+Aviation 1, citron, marasquin, liqueur(violette), gin
+Tom Collins, citron, sucre, gin(old tom), eau(gazeuse), cerise(noire), orange
+Ramos Gin Fizz, citron, lime, FLEUR_D_ORANGER, crème, blanc d'oeuf, gin, eau(gazeuse)
+Bramble, gin, citron, sucre, mure
+20th Century, liqueur(cacao), vin(cocchi americano), gin, citron
+Bee's knees, citron, miel, gin
+Last Word, lime, marasquin, chartreuse, gin, cerise
+Vodka Martini, vermouth(sec), vodka, olive(verte)
+Moscow mule, citron, gingembre(jus), vodka, eau(gazeuse)
+Headless horseman, citron, gingembre(jus), vodka, eau(gazeuse), bitter
+Vesper, vin(cocchi americano), vodka, gin, citron
+Margarita, citron, tequila, liqueur(triple sec), lime, sel
+Paloma, tequila, pamplemousse(jus), lime, sirop, eau(gazeuse), sel
+Mexican firing squad special, lime, grenadine, bitter(angostura), tequila, orange
+Daiquiri, lime, sirop, rhum(blanc)
+Hemingway daiquiri, lime, sirop, rhum(blanc), liqueur(marasquin), pamplemousse(jus)
+Dark and stormy, lime, gingembre(jus), rhum(gosling), eau(gazeuse)
+Mai Tai, sirop(orgeat), curaçao(sec), rhum(agricole), menthe, rhum(jamaicain), citron
+Mojito, menthe, sucre, lime, rhum(blanc)
+Hotel Nacional Special, ananas(jus), brandy(abricot), citron, sirop(cane), rhum, bitter(angostura)
+Sidecar, citron, cointreau, cognac
+French 75, citron, sirop, champagne, gin, citron
+French 75 au cognac, citron, sirop, champagne, cognac, citron
+Brandy Alexander, brandy, crème, liqueur(cacao)
+Vieux carré, bitter, vermouth(doux), whisky(rye), cognac, liqueur(bénédictine), citron(twist)
+Pink Lady, blanc d'oeuf, grenadine, citron, gin, brandy(apple), bitter
+Demonico, bitter, vermouth(sec), vermouth(doux), cognac, gin, citron(twist)
+Jack Rose, lime, grenadine, brandy(apple)
+Pan American Clipper, lime, grenadine, brandy(apple), absinthe
+Aperol Spritz, aperol, prosecco, eau(gazeuse), orange
+Americano, campari, vermouth(doux), eau(gazeuse), orange
+Champagne cocktail, sucre, bitter(angostura), champagne, citron(twist)
+Bamboo, bitter(angostura and orange), vermouth(sec), vin(sherry), citron(twist)
+Pisco Sour, citron, lime, sirop, pisco, blanc d'oeuf, bitter(angostura), cannelle
+Caipirinha, lime, sucre, sirop, cachaça

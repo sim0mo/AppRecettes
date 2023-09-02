@@ -60,7 +60,8 @@ class MainActivity : AppCompatActivity() {
 
         val gastronogeek = load("gastronogeek.txt", "Gastronogeek, le livre des potions")
         val catherine1 = load("catherine1.txt", "Catherine 1")
-        recueils = listOf(gastronogeek, catherine1)
+        val cocktails = load("cocktails.txt", "Cocktails")
+        recueils = listOf(gastronogeek, catherine1, cocktails)
     }
 
     private fun mainTest(){
