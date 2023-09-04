@@ -5,7 +5,7 @@ Sazerac, Bitter(Peychaud), sucre, eau(gazeuse), whisky(rye), absinthe
 Whisky fix, citron, sirop, whisky, cerise(noire)
 Boulevardier, vermouth(doux), whisky(bourbon), campari, orange(twist)
 Presbyterian, citron, gingembre(jus), whisky(rye), eau(gazeuse)
-Blinker, grenadine, pamplemousse(jus), whisky(rye)
+Blinker, sirop(grenadine), pamplemousse(jus), whisky(rye)
 Improved Whiskey Cocktail, sucre, bitter, absinthe, whisky(rye), marasquin, orange(twist)
 Monte Carlo, bitter, liqueur(benedictine), whisky(rye), citron,
 Mint Julep, menthe, sucre, sirop, whisky(bourbon), rhum(jamaicain)
@@ -28,7 +28,7 @@ Headless horseman, citron, gingembre(jus), vodka, eau(gazeuse), bitter
 Vesper, vin(cocchi americano), vodka, gin, citron
 Margarita, citron, tequila, liqueur(triple sec), lime, sel
 Paloma, tequila, pamplemousse(jus), lime, sirop, eau(gazeuse), sel
-Mexican firing squad special, lime, grenadine, bitter(angostura), tequila, orange
+Mexican firing squad special, lime, sirop(grenadine), bitter(angostura), tequila, orange
 Daiquiri, lime, sirop, rhum(blanc)
 Hemingway daiquiri, lime, sirop, rhum(blanc), liqueur(marasquin), pamplemousse(jus)
 Dark and stormy, lime, gingembre(jus), rhum(gosling), eau(gazeuse)
@@ -36,15 +36,15 @@ Mai Tai, sirop(orgeat), curaçao(sec), rhum(agricole), menthe, rhum(jamaicain), 
 Mojito, menthe, sucre, lime, rhum(blanc)
 Hotel Nacional Special, ananas(jus), brandy(abricot), citron, sirop(cane), rhum, bitter(angostura)
 Sidecar, citron, cointreau, cognac
-French 75, citron, sirop, champagne, gin, citron
-French 75 au cognac, citron, sirop, champagne, cognac, citron
+French 75, citron, sirop, champagne, gin
+French 75 au cognac, citron, sirop, champagne, cognac
 Brandy Alexander, brandy, crème, liqueur(cacao)
 Vieux carré, bitter, vermouth(doux), whisky(rye), cognac, liqueur(bénédictine), citron(twist)
-Pink Lady, blanc d'oeuf, grenadine, citron, gin, brandy(apple), bitter
+Pink Lady, blanc d'oeuf, sirop(grenadine), citron, gin, brandy(apple), bitter
 Demonico, bitter, vermouth(sec), vermouth(doux), cognac, gin, citron(twist)
-Jack Rose, lime, grenadine, brandy(apple)
-Pan American Clipper, lime, grenadine, brandy(apple), absinthe
-Aperol Spritz, aperol, prosecco, eau(gazeuse), orange
+Jack Rose, lime, sirop(grenadine), brandy(apple)
+Pan American Clipper, lime, sirop(grenadine), brandy(apple), absinthe
+Aperol Spritz, aperol, vin(prosecco), eau(gazeuse), orange
 Americano, campari, vermouth(doux), eau(gazeuse), orange
 Champagne cocktail, sucre, bitter(angostura), champagne, citron(twist)
 Bamboo, bitter(angostura and orange), vermouth(sec), vin(sherry), citron(twist)

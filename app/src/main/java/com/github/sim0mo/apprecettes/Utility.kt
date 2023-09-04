@@ -6,6 +6,7 @@ object Utility {
         ss = ss
             .replace("[èéê]".toRegex(), "e")
             .replace("[àâ]".toRegex(), "a")
+            .replace("ç".toRegex(), "c")
             .replace(" \\(".toRegex(), "(")
             .replace(" ".toRegex(), "_")
             .replace("'".toRegex(), "_")
